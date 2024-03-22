@@ -46,6 +46,12 @@ const Routing: Routes = [
     path: 'apps/permissions',
     loadChildren: () => import('./permission/permission.module').then((m) => m.PermissionModule),
   },
+
+  //Mis modulos
+  {
+    path: 'tipos',
+    loadChildren: () => import('../modules/tipos/tipos.module').then((m) => m.TiposModule),
+  },
   {
     path: '',
     redirectTo: '/dashboard',

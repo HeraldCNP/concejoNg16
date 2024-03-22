@@ -8,6 +8,7 @@ import { environment } from 'src/environments/environment';
 import { Router } from '@angular/router';
 import { HttpClient } from '@angular/common/http';
 
+
 export type UserType = UserModel | undefined;
 
 @Injectable({
@@ -51,9 +52,11 @@ export class AuthService implements OnDestroy {
   login(email: string, password: string): Observable<any> {
     this.isLoadingSubject.next(true);
     const endPoint = `${environment.URL_SERVICES}/auth/login`;
+    console.log(endPoint)
     return this.http.post(endPoint, {email, password}).pipe(
       map((auth: any) => {
         const result = this.setAuthFromLocalStorage(auth);
+        console.log('auth', auth);
         return result;
       }),
       catchError((err) => {
@@ -118,9 +121,11 @@ export class AuthService implements OnDestroy {
   // private methods
   private setAuthFromLocalStorage(auth: any): boolean {
     // store auth authToken/refreshToken/epiresIn in local storage to keep user logged in between page refreshes
-    if (auth && auth.access_token) {
+    if (auth && auth.token) {
+      console.log('auth', auth);
+
       localStorage.setItem('user', JSON.stringify(auth.user));
-      localStorage.setItem('token', auth.access_token);
+      localStorage.setItem('token', auth.token);
       return true;
     }
     return false;

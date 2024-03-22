@@ -161,7 +161,7 @@ export const environment = {
   },
 
   URL_BACKEND : 'http://apiecommerce.test/',
-  URL_SERVICES : 'http://apiecommerce.test/api',
+  URL_SERVICES : 'http://192.168.1.145:3200/api',
   URL_FRONTEND : 'http://localhost:5000/',
 
 
