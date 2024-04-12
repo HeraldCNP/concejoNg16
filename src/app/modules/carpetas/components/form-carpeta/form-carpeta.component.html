@@ -1,0 +1,137 @@
+<form class="create-form" [formGroup]="carpetaForm">
+  <h2 mat-dialog-title>{{ inputData.title }}</h2>
+  <mat-dialog-content class="mat-typography">
+
+    <mat-card class="">
+      <mat-card-content>
+        <!-- <mat-form-field class="full-width">
+          <mat-label>Correo Electronico</mat-label>
+          <input type="email" matInput placeholder="Correo Electronico" formControlName="email">
+        </mat-form-field> -->
+
+        <mat-form-field class="inline">
+          <mat-label>Gestion</mat-label>
+          <mat-select formControlName="gestion">
+            <mat-option value="2021">2021</mat-option>
+            <mat-option value="2022">2022</mat-option>
+            <mat-option value="2023">2023</mat-option>
+            <mat-option value="2024">2024</mat-option>
+            <mat-option value="2025">2025</mat-option>
+          </mat-select>
+          <mat-icon matSuffix>mail</mat-icon>
+          <mat-error *ngIf="form['gestion'].hasError('required') && form['gestion'].touched">
+            El gestion es obligatorio.
+          </mat-error>
+        </mat-form-field>
+
+        <mat-form-field class="inline right">
+          <mat-label>Tomo</mat-label>
+          <input matInput placeholder="Ej. ....." formControlName="tomo" type="number">
+          <mat-icon matSuffix>mail</mat-icon>
+          <mat-error *ngIf="form['tomo'].hasError('required') && form['tomo'].touched">
+            El tomo es obligatorio.
+          </mat-error>
+          <mat-error *ngIf="form['tomo'].hasError('tomo') && form['tomo'].touched">
+            El tomo de ser valido.
+          </mat-error>
+        </mat-form-field>
+
+        <mat-form-field class="full-width">
+          <mat-label>Nombre</mat-label>
+          <input matInput placeholder="Ej. ....." formControlName="nombre" type="text">
+          <mat-icon matSuffix>mail</mat-icon>
+          <mat-error *ngIf="form['nombre'].hasError('required') && form['nombre'].touched">
+            El Nombre es obligatorio.
+          </mat-error>
+          <mat-error *ngIf="form['nombre'].hasError('nombre') && form['nombre'].touched">
+            El Nombre de ser valido.
+          </mat-error>
+        </mat-form-field>
+
+        <mat-form-field class="full-width">
+          <mat-label>Tipo</mat-label>
+          <mat-select formControlName="tipo">
+            <mat-option *ngFor="let tipo of tipos()" [value]="tipo.nombre" (click)="selectTipo(tipo)">
+              {{tipo.nombre}}
+            </mat-option>
+          </mat-select>
+          <mat-icon matSuffix>mail</mat-icon>
+          <mat-error *ngIf="form['tipo'].hasError('required') && form['tipo'].touched">
+            El tipo es obligatorio.
+          </mat-error>
+        </mat-form-field>
+
+        <mat-form-field class="full-width" *ngIf="subTipos()">
+          <mat-label>Sub Tipo</mat-label>
+          <mat-select formControlName="subTipo">
+            <mat-option *ngFor="let subTipo of subTipos()" [value]="subTipo">
+              {{subTipo}}
+            </mat-option>
+          </mat-select>
+          <mat-icon matSuffix>mail</mat-icon>
+          <mat-error *ngIf="form['subTipo'].hasError('required') && form['subTipo'].touched">
+            El subTipo es obligatorio.
+          </mat-error>
+        </mat-form-field>
+
+        <mat-form-field class="full-width">
+          <mat-label>Lugar</mat-label>
+          <input matInput placeholder="Ej. ....." formControlName="lugar" type="text">
+          <mat-icon matSuffix>mail</mat-icon>
+          <mat-error *ngIf="form['lugar'].hasError('required') && form['lugar'].touched">
+            El lugar es obligatorio.
+          </mat-error>
+          <mat-error *ngIf="form['lugar'].hasError('lugar') && form['lugar'].touched">
+            El lugar de ser valido.
+          </mat-error>
+        </mat-form-field>
+
+        <mat-form-field class="inline">
+          <mat-label>Estante</mat-label>
+          <input matInput placeholder="Ej. ....." formControlName="estante" type="text">
+          <mat-icon matSuffix>mail</mat-icon>
+          <mat-error *ngIf="form['estante'].hasError('required') && form['estante'].touched">
+            El estante es obligatorio.
+          </mat-error>
+          <mat-error *ngIf="form['estante'].hasError('estante') && form['estante'].touched">
+            El estante de ser valido.
+          </mat-error>
+        </mat-form-field>
+
+        <mat-form-field class="inline right">
+          <mat-label>fila</mat-label>
+          <input matInput placeholder="Ej. ....." formControlName="fila" type="text">
+          <mat-icon matSuffix>mail</mat-icon>
+          <mat-error *ngIf="form['fila'].hasError('required') && form['fila'].touched">
+            El fila es obligatorio.
+          </mat-error>
+          <mat-error *ngIf="form['fila'].hasError('fila') && form['fila'].touched">
+            El fila de ser valido.
+          </mat-error>
+        </mat-form-field>
+
+        <mat-form-field class="full-width">
+          <mat-label>Observaciones</mat-label>
+          <textarea matInput placeholder="....." formControlName="observaciones"></textarea>
+          <mat-icon matSuffix>mail</mat-icon>
+          <mat-error *ngIf="form['observaciones'].hasError('required') && form['observaciones'].touched">
+            El observaciones es obligatorio.
+          </mat-error>
+          <mat-error *ngIf="form['observaciones'].hasError('observaciones') && form['observaciones'].touched">
+            El observaciones de ser valido.
+          </mat-error>
+        </mat-form-field>
+
+      </mat-card-content>
+    </mat-card>
+
+  </mat-dialog-content>
+  {{carpetaForm.value | json}}
+  <mat-dialog-actions align="end">
+    <button mat-button mat-dialog-close>Cancel</button>
+    <button (click)="saveCarpeta()" *ngIf="inputData.id === 0" mat-raised-button color="primary"
+      [disabled]="carpetaForm.invalid"><mat-icon>save</mat-icon>Registrar</button>
+    <button (click)="editCarpeta(inputData.id)" *ngIf="inputData.id !== 0" mat-raised-button color="primary"
+      [disabled]="carpetaForm.invalid"><mat-icon>save</mat-icon>Editar</button>
+  </mat-dialog-actions>
+</form>

@@ -1,4 +1,4 @@
-import { NgModule, APP_INITIALIZER } from '@angular/core';
+import { NgModule, APP_INITIALIZER, LOCALE_ID } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { HttpClientModule } from '@angular/common/http';
@@ -18,6 +18,10 @@ import { ToastrModule } from 'ngx-toastr';
 import { CKEditorModule } from 'ckeditor4-angular';
 // #fake-end#
 import { NgbPaginationModule } from '@ng-bootstrap/ng-bootstrap';
+import { MaterialModule } from './modules/material/material.module';
+
+import localeEs from '@angular/common/locales/es';
+import { registerLocaleData } from '@angular/common';
 
 function appInitializer(authService: AuthService) {
   return () => {
@@ -27,6 +31,8 @@ function appInitializer(authService: AuthService) {
     });
   };
 }
+
+registerLocaleData(localeEs, 'es');
 
 @NgModule({
   declarations: [AppComponent],
@@ -53,14 +59,16 @@ function appInitializer(authService: AuthService) {
     SweetAlert2Module.forRoot(),
     ToastrModule.forRoot(),
     NgbPaginationModule,
+    MaterialModule
   ],
   providers: [
     {
       provide: APP_INITIALIZER,
       useFactory: appInitializer,
       multi: true,
-      deps: [AuthService],
+      deps: [AuthService]
     },
+    {provide: LOCALE_ID, useValue: 'es'},
   ],
   bootstrap: [AppComponent],
 })

@@ -1,0 +1,14 @@
+<mat-card>
+  <mat-card-content>
+
+    <ul class="list-group text-center">
+      <li class="list-group-item"><b>Carpeta:</b> {{ inputData.tipo | titlecase }}</li>
+      <li class="list-group-item" *ngIf="inputData.subTipo"><b>Sub Tipo:</b> {{ inputData.subTipo | titlecase }}</li>
+      <li class="list-group-item"><b>Tomo:</b> {{ inputData.tomo }}</li>
+      <li class="list-group-item"><b>Lugar:</b> {{ inputData.lugar | titlecase }}</li>
+      <li class="list-group-item"><b>Estante:</b> {{ inputData.estante }}</li>
+      <li class="list-group-item"><b>Fila:</b> {{ inputData.fila }}</li>
+    </ul>
+
+  </mat-card-content>
+</mat-card>
