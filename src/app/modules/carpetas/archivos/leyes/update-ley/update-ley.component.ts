@@ -39,6 +39,7 @@ export class UpdateLeyComponent implements OnInit {
           detalle: this.archivo?.detalle,
           entidad: this.archivo?.entidad,
           fechaAprobacion: this.archivo?.fechaAprobacion,
+          fechaPromulgacion: this.archivo?.fechaPromulgacion,
           monto: this.archivo?.monto,
           fojas: this.archivo?.fojas,
           observaciones: this.archivo?.observaciones,
@@ -111,6 +112,10 @@ export class UpdateLeyComponent implements OnInit {
       console.log("Error en formulario");
     }
 
+  }
+
+  cancel(){
+    this.router.navigate(['carpetas/listLey', this.archivo.idCarpeta._id]);
   }
 
 }

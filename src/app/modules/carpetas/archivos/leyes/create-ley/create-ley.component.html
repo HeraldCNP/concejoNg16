@@ -75,7 +75,7 @@
 
               <mat-form-field class="full-width">
                 <mat-label>Fojas</mat-label>
-                <input matInput placeholder="Ej. ....." formControlName="fojas" type="text">
+                <input matInput placeholder="Ej. ....." formControlName="fojas" type="number">
                 <mat-icon matSuffix>format_list_numbered_rtl</mat-icon>
                 <mat-error *ngIf="form['fojas'].hasError('required') && form['fojas'].touched">
                   El fojas es obligatorio.
@@ -104,30 +104,6 @@
               </mat-form-field>
               <p *ngIf="uploadProgress">Progreso de la subida: {{uploadProgress}}%</p>
 
-
-              <!-- <mat-form-field class="inline">
-          <mat-label>Estante</mat-label>
-          <input matInput placeholder="Ej. ....." formControlName="estante" type="text">
-          <mat-icon matSuffix>mail</mat-icon>
-          <mat-error *ngIf="form['estante'].hasError('required') && form['estante'].touched">
-            El estante es obligatorio.
-          </mat-error>
-          <mat-error *ngIf="form['estante'].hasError('estante') && form['estante'].touched">
-            El estante de ser valido.
-          </mat-error> .
-        </mat-form-field>
-
-        <mat-form-field class="inline right">
-          <mat-label>fila</mat-label>
-          <input matInput placeholder="Ej. ....." formControlName="fila" type="text">
-          <mat-icon matSuffix>mail</mat-icon>
-          <mat-error *ngIf="form['fila'].hasError('required') && form['fila'].touched">
-            El fila es obligatorio.
-          </mat-error>
-          <mat-error *ngIf="form['fila'].hasError('fila') && form['fila'].touched">
-            El fila de ser valido.
-          </mat-error>
-        </mat-form-field> -->
 
 
 

@@ -2,7 +2,14 @@
   <mat-card-content>
 
     <ul class="list-group text-center">
-      <li class="list-group-item"><b>Carpeta:</b> {{ inputData.tipo | titlecase }}</li>
+      <li class="list-group-item" *ngIf="inputData.tipo === 'leyes'"><b>Carpeta:</b> <span > {{ 'Leyes'| titlecase }} </span></li>
+      <li class="list-group-item" *ngIf="inputData.tipo === 'correspondencias'"><b>Carpeta:</b> <span > {{ 'Correspondencias'| titlecase }} </span></li>
+      <li class="list-group-item" *ngIf="inputData.tipo === 'peticiones'"><b>Carpeta:</b> <span > {{ 'Petición de Informes'| titlecase }} </span></li>
+      <li class="list-group-item" *ngIf="inputData.tipo === 'convocatorias'"><b>Carpeta:</b> <span > {{ 'Convocatorias'| titlecase }} </span></li>
+      <li class="list-group-item" *ngIf="inputData.tipo === 'cronogramas'"><b>Carpeta:</b> <span > {{ 'Cronogramas'| titlecase }} </span></li>
+      <li class="list-group-item" *ngIf="inputData.tipo === 'minutas'"><b>Carpeta:</b> <span > {{ 'Minuta De Comunicación'| titlecase }} </span></li>
+      <li class="list-group-item" *ngIf="inputData.tipo === 'infcomisiones'"><b>Carpeta:</b> <span > {{ 'Informes De Comisión'| titlecase }} </span></li>
+      <li class="list-group-item" *ngIf="inputData.tipo === 'infiscalizacion'"><b>Carpeta:</b> <span > {{ 'Informe de Fiscalización'| titlecase }} </span></li>
       <li class="list-group-item" *ngIf="inputData.subTipo"><b>Sub Tipo:</b> {{ inputData.subTipo | titlecase }}</li>
       <li class="list-group-item"><b>Tomo:</b> {{ inputData.tomo }}</li>
       <li class="list-group-item"><b>Lugar:</b> {{ inputData.lugar | titlecase }}</li>

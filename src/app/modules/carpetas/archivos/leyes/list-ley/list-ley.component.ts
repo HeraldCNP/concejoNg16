@@ -111,17 +111,6 @@ export class ListLeyComponent implements OnInit {
       })
   }
 
-  // createCarpeta() {
-  //   this.openDialog(0, 'Crear Carpeta')
-  // }
-
-  // editCarpeta(id: any) {
-  //   this.openDialog(id, 'Editar Carpeta')
-  // }
-
-  // addTipo(id:string){
-  //   this.openDialog2(id, 'Añadir Sub Tipo')
-  // }
 
   deleteArchivoResolucion(id: any) {
     Swal.fire({
@@ -148,7 +137,7 @@ export class ListLeyComponent implements OnInit {
           text: "Archivo ha sido eliminado.",
           icon: "success"
         });
-        this.router.navigate(['carpetas/listResolucion', this.carpetaId]);
+        this.router.navigate(['carpetas/listLey', this.carpetaId]);
       }
     });
 

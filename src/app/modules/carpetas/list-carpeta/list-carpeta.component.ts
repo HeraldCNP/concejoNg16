@@ -26,13 +26,13 @@ export class ListCarpetaComponent implements OnInit {
 
 
 
-  displayedColumn: string[] = ['gestion', 'nombre', 'tomo', 'tipo', 'subTipo', 'lugar', 'estante', 'fila', 'observaciones', 'acciones'];
+  displayedColumn: string[] = ['gestion', 'tomo', 'tipo', 'lugar', 'estante', 'fila', 'observaciones', 'acciones'];
   dataSource!: MatTableDataSource<any>
   @ViewChild(MatPaginator) paginator!: MatPaginator;
   @ViewChild(MatSort) sort!: MatSort;
   carpetas = signal<any>(null);
-  flag:string = '';
-  cantidad:number = 0;
+  flag: string = '';
+  cantidad: number = 0;
 
   ngOnInit(): void {
     this.carpetaService.termino.subscribe(
@@ -44,7 +44,7 @@ export class ListCarpetaComponent implements OnInit {
     this.cargarCarpetas(this.flag);
   }
 
-  cargarCarpetas(flag:string) {
+  cargarCarpetas(flag: string) {
     this.carpetaService.getAllCarpetas(flag)
       .subscribe({
         next: (data: any) => {
@@ -88,6 +88,7 @@ export class ListCarpetaComponent implements OnInit {
         this.carpetaService.deleteCarpeta(id)
           .subscribe({
             next: () => {
+              this.flag = '';
               this.cargarCarpetas('');
             },
             error: (message: string | undefined) => {
@@ -123,6 +124,7 @@ export class ListCarpetaComponent implements OnInit {
         }
 
         if (resp == 'created') {
+          this.flag = '';
           this.cargarCarpetas('');
           Swal.fire('Bien', `Carpeta Creada Correctamente`, 'success')
         }
@@ -147,7 +149,7 @@ export class ListCarpetaComponent implements OnInit {
   }
 
 
-  listArchivo(row: any){
+  listArchivo(row: any) {
     switch (row.tipo) {
       case 'resoluciones':
         console.log(row.tipo);
@@ -156,6 +158,40 @@ export class ListCarpetaComponent implements OnInit {
       case 'leyes':
         console.log(row.tipo);
         this.router.navigate(['carpetas/listLey', row._id]);
+        break;
+      case 'correspondencias':
+        console.log(row.tipo);
+        this.router.navigate(['carpetas/listCorrespondencia', row._id]);
+        break;
+
+      case 'convocatorias':
+        console.log(row.tipo);
+        this.router.navigate(['carpetas/listConvocatoria', row._id]);
+        break;
+
+      case 'peticiones':
+        console.log(row.tipo);
+        this.router.navigate(['carpetas/listPeticion', row._id]);
+        break;
+
+      case 'minutas':
+        console.log(row.tipo);
+        this.router.navigate(['carpetas/listMinuta', row._id]);
+        break;
+
+      case 'infcomisiones':
+        console.log(row.tipo);
+        this.router.navigate(['carpetas/listInfComision', row._id]);
+        break;
+
+      case 'infiscalizacion':
+        console.log(row.tipo);
+        this.router.navigate(['carpetas/listInFiscalizacion', row._id]);
+        break;
+
+      case 'cronogramas':
+        console.log(row.tipo);
+        this.router.navigate(['carpetas/listCronograma', row._id]);
         break;
 
       default:
@@ -175,6 +211,41 @@ export class ListCarpetaComponent implements OnInit {
         console.log(row.tipo);
         this.router.navigate(['carpetas/createLey', row._id]);
         break;
+      case 'correspondencias':
+        console.log(row.tipo);
+        this.router.navigate(['carpetas/createCorrespondencia', row._id]);
+        break;
+
+      case 'convocatorias':
+        console.log(row.tipo);
+        this.router.navigate(['carpetas/createConvocatoria', row._id]);
+        break;
+
+      case 'peticiones':
+        console.log(row.tipo);
+        this.router.navigate(['carpetas/createPeticion', row._id]);
+        break;
+
+      case 'minutas':
+        console.log(row.tipo);
+        this.router.navigate(['carpetas/createMinuta', row._id]);
+        break;
+
+      case 'infcomisiones':
+        console.log(row.tipo);
+        this.router.navigate(['carpetas/createInfComision', row._id]);
+        break;
+
+      case 'infiscalizacion':
+        console.log(row.tipo);
+        this.router.navigate(['carpetas/createInFiscalizacion', row._id]);
+        break;
+
+      case 'cronogramas':
+        console.log(row.tipo);
+        this.router.navigate(['carpetas/createCronograma', row._id]);
+        break;
+
       default:
         break;
 

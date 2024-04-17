@@ -59,7 +59,7 @@
               <mat-form-field class="full-width">
                 <mat-label>Fecha de Aprobación</mat-label>
                 <input matInput [matDatepicker]="picker" formControlName="fechaAprobacion">
-                <mat-hint>MM/DD/YYYY</mat-hint>
+                <mat-hint>DD/MM/YYYY</mat-hint>
                 <mat-datepicker-toggle matIconSuffix [for]="picker"></mat-datepicker-toggle>
                 <mat-datepicker #picker></mat-datepicker>
                 <mat-error *ngIf="form['fechaAprobacion'].hasError('required') && form['fechaAprobacion'].touched">
@@ -73,7 +73,7 @@
 
               <mat-form-field class="inline">
                 <mat-label>Monto</mat-label>
-                <input matInput placeholder="Ej. ....." formControlName="monto" type="text">
+                <input matInput placeholder="Ej. ....." formControlName="monto" type="number">
                 <mat-icon matSuffix>payments</mat-icon>
                 <mat-error *ngIf="form['monto'].hasError('required') && form['monto'].touched">
                   El monto es obligatorio.
@@ -85,7 +85,7 @@
 
               <mat-form-field class="inline right">
                 <mat-label>Fojas</mat-label>
-                <input matInput placeholder="Ej. ....." formControlName="fojas" type="text">
+                <input matInput placeholder="Ej. ....." formControlName="fojas" type="number">
                 <mat-icon matSuffix>format_list_numbered_rtl</mat-icon>
                 <mat-error *ngIf="form['fojas'].hasError('required') && form['fojas'].touched">
                   El fojas es obligatorio.

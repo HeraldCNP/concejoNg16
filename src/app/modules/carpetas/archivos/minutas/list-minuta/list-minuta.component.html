@@ -1,0 +1,171 @@
+<div class="row px-2">
+  <div class="col-md-12">
+    <mat-card>
+      <mat-card-header>
+        <mat-card-title>Lista de Archivos: Minutas de Comunicación</mat-card-title>
+        <!-- <mat-card-subtitle>End</mat-card-subtitle> -->
+        <span class="spacer"></span>
+        <mat-dialog-actions>
+          <button mat-mini-fab matTooltip="Crear Nuevo" color="primary" (click)="createArchivoMinuta(carpetaId)"
+            aria-label="Example mini fab with a heart icon">
+            <mat-icon>add</mat-icon>
+          </button>
+        </mat-dialog-actions>
+
+      </mat-card-header>
+      <div class="row m-2">
+        <div class="col">
+          <form [formGroup]="buscarForm">
+            <div class="row">
+              <div class="col-md-3">
+                <div class="input-group mb-1">
+                  <span class="input-group-text" id="gestion"><b> Gestion</b></span>
+                  <select id="gestion" formControlName="gestion" class="form-select form-control-sm">
+                    <option value="" [defaultSelected]="true">Seleccione gestión</option>
+                    <option value="2025">2025</option>
+                    <option value="2024">2024</option>
+                    <option value="2023">2023</option>
+                    <option value="2022">2022</option>
+                    <option value="2021">2021</option>
+                  </select>
+                  <div class="form-text" *ngIf="form['gestion'].touched && form['gestion'].invalid">
+                    <div *ngIf="form['gestion'].errors && form['gestion'].errors['required']">* gestion es Requerido.
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div class="col-md-3">
+                <div class="input-group mb-1 mx-1">
+                  <span class="input-group-text izq" id="numero"><b>Numero</b></span>
+                  <input class="form-control form-control-sm" type="text" formControlName="numero">
+                  <div class="form-text" *ngIf="form['numero'].touched && form['numero'].invalid">
+                    <div *ngIf="form['numero'].errors && form['numero'].errors['required']">* Numero</div>
+                  </div>
+                </div>
+              </div>
+
+              <div class="col-md-3">
+                <div class="input-group mb-1 mx-1">
+                  <span class="input-group-text izq" id="glosa"><b>Detalle</b></span>
+                  <input class="form-control" type="text" formControlName="detalle">
+                  <div class="form-text" *ngIf="form['detalle'].touched && form['detalle'].invalid">
+                    <div *ngIf="form['detalle'].errors && form['detalle'].errors['required']">* detalle</div>
+                  </div>
+                </div>
+              </div>
+
+              <div class="col-md-3">
+                <button (click)="obtener(buscarForm)" class="btn btn-primary mr-3" [disabled]="buscarForm.invalid"
+                  style="--bs-btn-padding-y: 0.25rem; --bs-btn-font-size: 0.75rem">
+                  Buscar
+                </button>
+              </div>
+
+
+            </div>
+
+          </form>
+          <!-- <pre>{{ buscarForm.value | json }}</pre> -->
+        </div>
+      </div>
+
+      <mat-divider></mat-divider>
+
+      <mat-form-field>
+        <mat-label>Buscar...</mat-label>
+        <input matInput placeholder="Buscar" search (keyup)="applyFilter($event)" #termino>
+        <mat-icon matSuffix>search</mat-icon>
+      </mat-form-field>
+      <mat-divider></mat-divider>
+      <mat-card-content>
+        <div>
+
+          <!-- displayedColumn: string[] = ['numero', 'detalle', 'fechaAprobacion', 'fechaPromulgacion', 'fojas', 'origen', 'destino', 'archivo', 'observaciones', 'acciones']; -->
+
+          <table mat-table matSort [dataSource]="dataSource">
+
+            <ng-container matColumnDef="numero">
+              <th mat-header-cell *matHeaderCellDef mat-sort-header>Número</th>
+              <td mat-cell *matCellDef="let row">{{ row.numero }}</td>
+            </ng-container>
+
+            <ng-container matColumnDef="detalle">
+              <th mat-header-cell *matHeaderCellDef mat-sort-header>Detalle</th>
+              <td mat-cell *matCellDef="let row">{{ row.detalle }}</td>
+            </ng-container>
+
+
+            <ng-container matColumnDef="fechaAprobacion">
+              <th mat-header-cell *matHeaderCellDef mat-sort-header>Fecha de Remisión</th>
+              <td mat-cell *matCellDef="let row">{{ row.fechaAprobacion | date : "longDate" : "UTC" }}</td>
+            </ng-container>
+
+            <ng-container matColumnDef="fechaPromulgacion">
+              <th mat-header-cell *matHeaderCellDef mat-sort-header>Fecha de Recepción</th>
+              <td mat-cell *matCellDef="let row">{{ row.fechaPromulgacion | date : "longDate" : "UTC" }}</td>
+            </ng-container>
+
+            <ng-container matColumnDef="destino">
+              <th mat-header-cell *matHeaderCellDef mat-sort-header>Destino</th>
+              <td mat-cell *matCellDef="let row">{{ row.destino }}</td>
+            </ng-container>
+
+            <ng-container matColumnDef="fojas">
+              <th mat-header-cell *matHeaderCellDef mat-sort-header>Fojas</th>
+              <td mat-cell *matCellDef="let row">{{ row.fojas }}</td>
+            </ng-container>
+
+            <ng-container matColumnDef="archivo">
+              <th mat-header-cell *matHeaderCellDef mat-sort-header>Archivo</th>
+              <td mat-cell *matCellDef="let row">
+
+                <a *ngIf="row.nombreArchivo" href="{{ baseUrl }}/archivo/getArchivo/{{ row.nombreArchivo }}"
+                  target="_blank">
+                  <button mat-icon-button aria-label="Example icon button with a vertical three dot icon"
+                    matTooltip="Descargar">
+                    <mat-icon>download</mat-icon>
+                  </button>
+                </a>
+              </td>
+            </ng-container>
+
+            <ng-container matColumnDef="observaciones">
+              <th mat-header-cell *matHeaderCellDef mat-sort-header>Observaciones</th>
+              <td mat-cell *matCellDef="let row">{{ row.observaciones }}</td>
+            </ng-container>
+
+            <ng-container matColumnDef="acciones">
+              <th mat-header-cell *matHeaderCellDef mat-sort-header>Acciones</th>
+              <td></td>
+              <td mat-cell *matCellDef="let row" style="width: 220px;">
+
+                <button class="iconBtn" (click)="verArchivo(row._id)" mat-icon-button color="accent"
+                  matTooltip="Ver Carpeta" aria-label="Example icon-button with a heart icon">
+                  <mat-icon>folder</mat-icon>
+                </button>
+
+                <button class="iconBtn" (click)="editArchivoMinuta(row._id)" mat-icon-button color="primary"
+                  matTooltip="Editar" aria-label="Example icon-button with a heart icon">
+                  <mat-icon>edit</mat-icon>
+                </button>
+
+                <button class="iconBtn" (click)="deleteArchivoResolucion(row._id)" mat-icon-button color="warn"
+                  matTooltip="Eliminar" aria-label="Example icon-button with a heart icon">
+                  <mat-icon>delete</mat-icon>
+                </button>
+              </td>
+            </ng-container>
+
+            <tr mat-header-row *matHeaderRowDef="displayedColumn"></tr>
+            <tr mat-row *matRowDef="let row; columns: displayedColumn"></tr>
+
+            <tr *matNoDataRow>
+              <td class="mat-cell">"{{ termino.value }}" No existe</td>
+            </tr>
+          </table>
+          <mat-paginator [pageSizeOptions]="[10 ,25 , 50]" aria-label="Select Page of Users"></mat-paginator>
+        </div>
+      </mat-card-content>
+    </mat-card>
+  </div>
+</div>

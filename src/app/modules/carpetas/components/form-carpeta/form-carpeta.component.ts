@@ -39,7 +39,6 @@ export class FormCarpetaComponent implements OnInit {
   // displayedColumn: string[] = ['gestion', 'nombre', 'tomo', 'tipo', 'subTipo', 'lugar', 'ubicacion', 'acciones'];
   public carpetaForm: FormGroup = this.fb.group({
     gestion: ['', [Validators.required]],
-    nombre: ['', [Validators.required]],
     tomo: ['', [Validators.required]],
     tipo: ['', [Validators.required]],
     subTipo: [''],
@@ -83,7 +82,6 @@ export class FormCarpetaComponent implements OnInit {
       console.log(this.editData);
       this.carpetaForm.patchValue({
         gestion: this.editData.gestion,
-        nombre: this.editData.nombre,
         tomo: this.editData.tomo,
         tipo: this.editData.tipo,
         subTipo: this.editData.subTipo,

@@ -24,7 +24,7 @@
     <!-- Separator -->
     <div class="menu-item">
       <div class="menu-content pt-8 pb-2">
-        <span class="menu-section text-muted text-uppercase fs-8 ls-1">Configuraciones</span>
+        <span class="menu-section text-muted text-uppercase fs-8 ls-1">Menú</span>
       </div>
     </div>
 
@@ -214,6 +214,91 @@
           </a>
         </div>
 
+        <div class="menu-item">
+          <a class="menu-link without-sub" routerLinkActive="active" [routerLink]="['/carpetas/list', 'correspondencias']" (click)="enviarValor('correspondencias')">
+            <span
+              class="menu-bullet">
+              <span class="bullet bullet-dot"></span>
+            </span>
+            <span
+              class="menu-title">Correspondencias
+            </span>
+          </a>
+        </div>
+
+        <div class="menu-item">
+          <a class="menu-link without-sub" routerLinkActive="active" [routerLink]="['/carpetas/list', 'convocatorias']" (click)="enviarValor('convocatorias')">
+            <span
+              class="menu-bullet">
+              <span class="bullet bullet-dot"></span>
+            </span>
+            <span
+              class="menu-title">Convocatorias
+            </span>
+          </a>
+        </div>
+
+        <div class="menu-item">
+          <a class="menu-link without-sub" routerLinkActive="active" [routerLink]="['/carpetas/list', 'peticiones']" (click)="enviarValor('peticiones')">
+            <span
+              class="menu-bullet">
+              <span class="bullet bullet-dot"></span>
+            </span>
+            <span
+              class="menu-title">Peticiones
+            </span>
+          </a>
+        </div>
+
+        <div class="menu-item">
+          <a class="menu-link without-sub" routerLinkActive="active" [routerLink]="['/carpetas/list', 'minutas']" (click)="enviarValor('minutas')">
+            <span
+              class="menu-bullet">
+              <span class="bullet bullet-dot"></span>
+            </span>
+            <span
+              class="menu-title">Minutas de Comunicación
+            </span>
+          </a>
+        </div>
+
+        <div class="menu-item">
+          <a class="menu-link without-sub" routerLinkActive="active" [routerLink]="['/carpetas/list', 'infcomisiones']" (click)="enviarValor('infcomisiones')">
+            <span
+              class="menu-bullet">
+              <span class="bullet bullet-dot"></span>
+            </span>
+            <span
+              class="menu-title">Informes de Comisión
+            </span>
+          </a>
+        </div>
+
+        <div class="menu-item">
+          <a class="menu-link without-sub" routerLinkActive="active" [routerLink]="['/carpetas/list', 'infiscalizacion']" (click)="enviarValor('infiscalizacion')">
+            <span
+              class="menu-bullet">
+              <span class="bullet bullet-dot"></span>
+            </span>
+            <span
+              class="menu-title">Informes de Fiscalización
+            </span>
+          </a>
+        </div>
+
+        <div class="menu-item">
+          <a class="menu-link without-sub" routerLinkActive="active" [routerLink]="['/carpetas/list', 'cronogramas']" (click)="enviarValor('cronogramas')">
+            <span class="menu-bullet">
+              <span class="bullet bullet-dot"></span>
+            </span>
+            <span
+              class="menu-title">Cronogramas
+            </span>
+          </a>
+        </div>
+
+
+
         <!-- <div class="menu-item">
           <a class="menu-link without-sub" routerLinkActive="active" routerLink="/tipos/register">
             <span
@@ -230,11 +315,11 @@
 
 
     <!-- Separator -->
-    <div class="menu-item">
+    <!-- <div class="menu-item">
       <div class="menu-content pt-8 pb-2">
         <span class="menu-section text-muted text-uppercase fs-8 ls-1">Apps</span>
       </div>
-    </div>
+    </div> -->
 
 
   </div>

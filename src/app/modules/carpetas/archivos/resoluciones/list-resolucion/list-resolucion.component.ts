@@ -110,17 +110,6 @@ export class ListResolucionComponent implements OnInit {
       })
   }
 
-  // createCarpeta() {
-  //   this.openDialog(0, 'Crear Carpeta')
-  // }
-
-  // editCarpeta(id: any) {
-  //   this.openDialog(id, 'Editar Carpeta')
-  // }
-
-  // addTipo(id:string){
-  //   this.openDialog2(id, 'Añadir Sub Tipo')
-  // }
 
   deleteArchivoResolucion(id: any) {
     Swal.fire({
@@ -251,4 +240,5 @@ export class ListResolucionComponent implements OnInit {
   editArchivoResolucion(id:any){
     this.router.navigate(['carpetas/updateResolucion', id]);
   }
+
 }

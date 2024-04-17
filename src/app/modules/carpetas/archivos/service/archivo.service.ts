@@ -45,6 +45,7 @@ export class ArchivoService {
     const req = new HttpRequest('POST', url, data,  {
       reportProgress: true,
       responseType: 'json',
+      headers: header
     });
     return this.http.request(req);
 
@@ -65,6 +66,7 @@ export class ArchivoService {
     const req = new HttpRequest('PATCH', url, data,  {
       reportProgress: true,
       responseType: 'json',
+      headers: header
     });
     return this.http.request(req);
 
