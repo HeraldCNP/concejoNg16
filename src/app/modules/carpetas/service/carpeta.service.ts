@@ -111,4 +111,12 @@ export class CarpetaService {
 
 
   /* END Servicios Tipos */
+
+
+  totales(): Observable<any> {
+    const url = `${this.baseUrl}/carpeta/totales`;
+    const header = this.headers;
+    return this.http.get<any>(url, { headers: header });
+  }
+
 }

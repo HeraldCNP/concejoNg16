@@ -72,22 +72,22 @@
             </ng-container>
 
             <ng-container matColumnDef="acciones">
-              <th mat-header-cell *matHeaderCellDef mat-sort-header>Acciones</th>
+              <th mat-header-cell *matHeaderCellDef mat-sort-header style="width: 250px;">Acciones</th>
               <td></td>
               <td mat-cell *matCellDef="let row" style="width: 220px;">
-                <button class="iconBtn" (click)="listArchivo(row)" mat-icon-button matTooltip="Ver Archivos"
+                <button class="iconBtn" (click)="listArchivo(row)" mat-icon-button color="accent" matTooltip="Ver Archivos"
                   aria-label="Example icon-button with a heart icon">
                   <mat-icon>preview</mat-icon>
                 </button>
-                <button class="iconBtn" (click)="createArchivo(row)" mat-icon-button matTooltip="Añadir Archivo"
+                <button class="iconBtn" (click)="createArchivo(row)" mat-icon-button color="primary" matTooltip="Añadir Archivo"
                   aria-label="Example icon-button with a heart icon">
                   <mat-icon>library_add</mat-icon>
                 </button>
-                <button class="iconBtn" (click)="editCarpeta(row._id)" mat-mini-fab color="accent" matTooltip="Editar"
+                <button class="iconBtn" (click)="editCarpeta(row._id)" mat-icon-button color="primary" matTooltip="Editar"
                   aria-label="Example icon-button with a heart icon">
                   <mat-icon>edit</mat-icon>
                 </button>
-                <button class="iconBtn" (click)="deleteCarpeta(row._id)" mat-icon-button matTooltip="Eliminar"
+                <button class="iconBtn" (click)="deleteCarpeta(row._id)" mat-icon-button color="warn" matTooltip="Eliminar"
                   aria-label="Example icon-button with a heart icon">
                   <mat-icon>delete</mat-icon>
                 </button>
