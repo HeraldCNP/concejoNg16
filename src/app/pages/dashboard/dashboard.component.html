@@ -1,47 +1,47 @@
-<div class="row justify-content-between">
+<div class="row justify-content-between" *ngIf="totales()">
   <div class="col-6 col-md-4 text-center border-translucent border-start-xxl border-end-xxl-0 border-bottom-xxl-0 border-end border-bottom pb-4 pb-xxl-0 "><span class="uil fs-1 lh-1 uil-envelope text-primary"></span>
     <img src="./assets/media/patterns/carpeta.png" width="150px" alt="">
-    <h1 class="fs-1 pt-3">{{ totales.totalLeyes }}</h1>
+    <h1 class="fs-1 pt-3">{{ totales().totalLeyes }}</h1>
     <p class="fs-2 mb-0">Total Leyes</p>
   </div>
   <div class="col-6 col-md-4 text-center border-translucent border-start-xxl border-end-xxl-0 border-bottom-xxl-0 border-end-md border-bottom pb-4 pb-xxl-0"><span class="uil fs-1 lh-1 uil-envelope-upload text-info"></span>
     <img src="./assets/media/patterns/carpeta.png" width="150px" alt="">
-    <h1 class="fs-1 pt-3">{{ totales.totalCorrespondencias }}</h1>
+    <h1 class="fs-1 pt-3">{{ totales().totalCorrespondencias }}</h1>
     <p class="fs-2 mb-0">Total Correspondencias</p>
   </div>
   <div class="col-6 col-md-4 text-center border-translucent border-start-xxl border-bottom-xxl-0 border-bottom border-end border-end-md-0 pb-4 pb-xxl-0 pt-4 pt-md-0"><span class="uil fs-1 lh-1 uil-envelopes text-primary"></span>
     <img src="./assets/media/patterns/carpeta.png" width="150px" alt="">
-    <h1 class="fs-1 pt-3">{{ totales.totalResoluciones }}</h1>
+    <h1 class="fs-1 pt-3">{{ totales().totalResoluciones }}</h1>
     <p class="fs-2 mb-0">Total Resoluciones</p>
   </div>
   <div class="col-6 col-md-4 text-center border-translucent border-start-xxl border-end-md border-end-xxl-0 border-bottom border-bottom-md-0 pb-4 pb-xxl-0 pt-4 pt-xxl-0"><span class="uil fs-1 lh-1 uil-envelope-open text-info"></span>
     <img src="./assets/media/patterns/carpeta.png" width="150px" alt="">
-    <h1 class="fs-1 pt-3">{{ totales.totalPeticiones }}</h1>
+    <h1 class="fs-1 pt-3">{{ totales().totalPeticiones }}</h1>
     <p class="fs-2 mb-0">Total Petición de Informes</p>
   </div>
   <div class="col-6 col-md-4 text-center border-translucent border-start-xxl border-end border-end-xxl-0 pb-md-4 pb-xxl-0 pt-4 pt-xxl-0"><span class="uil fs-1 lh-1 uil-envelope-check text-success"></span>
     <img src="./assets/media/patterns/carpeta.png" width="150px" alt="">
-    <h1 class="fs-1 pt-3">{{ totales.totalConvocatorias }}</h1>
+    <h1 class="fs-1 pt-3">{{ totales().totalConvocatorias }}</h1>
     <p class="fs-2 mb-0">Total Convocatorias</p>
   </div>
   <div class="col-6 col-md-4 text-center border-translucent border-start-xxl border-end-xxl pb-md-4 pb-xxl-0 pt-4 pt-xxl-0"><span class="uil fs-1 lh-1 uil-envelope-block text-danger"></span>
     <img src="./assets/media/patterns/carpeta.png" width="150px" alt="">
-    <h1 class="fs-1 pt-3">{{ totales.totalCronogramas }}</h1>
+    <h1 class="fs-1 pt-3">{{ totales().totalCronogramas }}</h1>
     <p class="fs-2 mb-0">Total Cronogramas</p>
   </div>
   <div class="col-6 col-md-4 text-center border-translucent border-start-xxl border-end-xxl pb-md-4 pb-xxl-0 pt-4 pt-xxl-0"><span class="uil fs-1 lh-1 uil-envelope-block text-danger"></span>
     <img src="./assets/media/patterns/carpeta.png" width="150px" alt="">
-    <h1 class="fs-1 pt-3">{{ totales.totalMinutas }}</h1>
+    <h1 class="fs-1 pt-3">{{ totales().totalMinutas }}</h1>
     <p class="fs-2 mb-0">Total Minutas De Comunicación</p>
   </div>
   <div class="col-6 col-md-4 text-center border-translucent border-start-xxl border-end-xxl pb-md-4 pb-xxl-0 pt-4 pt-xxl-0"><span class="uil fs-1 lh-1 uil-envelope-block text-danger"></span>
     <img src="./assets/media/patterns/carpeta.png" width="150px" alt="">
-    <h1 class="fs-1 pt-3">{{ totales.totalInfComisiones }}</h1>
+    <h1 class="fs-1 pt-3">{{ totales().totalInfComisiones }}</h1>
     <p class="fs-2 mb-0">Total Informes De Comisión</p>
   </div>
   <div class="col-6 col-md-4 text-center border-translucent border-start-xxl border-end-xxl pb-md-4 pb-xxl-0 pt-4 pt-xxl-0"><span class="uil fs-1 lh-1 uil-envelope-block text-danger"></span>
     <img src="./assets/media/patterns/carpeta.png" width="150px" alt="">
-    <h1 class="fs-1 pt-3">{{ totales.totalInFiscalizacion }}</h1>
+    <h1 class="fs-1 pt-3">{{ totales().totalInFiscalizacion }}</h1>
     <p class="fs-2 mb-0">Total Informe de Fiscalización</p>
   </div>
 </div>
